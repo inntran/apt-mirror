@@ -707,6 +707,7 @@ sub process_index_gz
 
         if ( exists $lines{"Filename:"} )
         {    # Packages index
+            next if $lines{"Filename:"} =~ /-dbg_/;
             $skipclean{ remove_double_slashes( $path . "/" . $lines{"Filename:"} ) } = 1;
             print FILES_ALL remove_double_slashes( $path . "/" . $lines{"Filename:"} ) . "\n";
             print FILES_MD5 $lines{"MD5sum:"} . "  " . remove_double_slashes( $path . "/" . $lines{"Filename:"} ) . "\n";
